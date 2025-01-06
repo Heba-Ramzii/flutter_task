@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled2/core/utils/toaster.dart';
 import 'package:untitled2/feature/view/widget/product_card.dart';
 import '../../core/utils/constants.dart';
-import '../model/product_group_model.dart';
 import '../viewmodels/product/product_cubit.dart';
 
 class ProductGroupScreen extends StatefulWidget {
@@ -14,6 +13,7 @@ class ProductGroupScreen extends StatefulWidget {
 }
 
 class _ProductGroupScreenState extends State<ProductGroupScreen> {
+  @override
   void initState() {
     super.initState();
     context.read<ProductCubit>().fetchProductGroups();
@@ -48,7 +48,7 @@ class _ProductGroupScreenState extends State<ProductGroupScreen> {
               itemBuilder: (context, index) {
                 return ProductCard(
                   image:
-                  "https://images.pexels.com/photos/6782352/pexels-photo-6782352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                  "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                   title: productGroups[index].nameA,
                   code: productGroups[index].code,
                   brandName: productGroups[index].groupName,

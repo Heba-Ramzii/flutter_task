@@ -17,9 +17,6 @@ class LoginCubit extends Cubit<LoginState> {
       );
 
       if (response.statusCode == 200) {
-        String token = response.data['token']; // Assuming the token is in the response
-        //await _storeToken(token);
-        //print("TokenToken: $token");
         emit(LoginSuccess(response.data));
       } else {
         emit(LoginFailure('Login failed.'));
