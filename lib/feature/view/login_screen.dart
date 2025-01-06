@@ -31,7 +31,7 @@ class LoginScreen extends StatelessWidget {
               Toaster.showError(context: context, text: state.data['message']);
             }
           } else if (state is LoginFailure) {
-            String errorMessage = "Error while authenticating" ?? state.error ;
+            String errorMessage = "ادخل الكود الصحيح" ?? state.error ;
             Toaster.showError(context: context, text: errorMessage);
           }
         },

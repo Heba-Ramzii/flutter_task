@@ -29,7 +29,7 @@ class ProductCard extends StatelessWidget {
       onTap: press,
       child: Container(
         width: 140,
-        height: 240,
+        //height: 240,
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           border: Border.all(width: 2,color: Colors.black12),
@@ -39,7 +39,7 @@ class ProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AspectRatio(
-              aspectRatio: 1.15,
+              aspectRatio: 1.3,
               child: Stack(
                 children: [
                   ClipRRect(

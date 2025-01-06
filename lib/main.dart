@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled2/core/utils/colors_manager.dart';
 import 'package:untitled2/feature/view/login_screen.dart';
+import 'package:untitled2/feature/view/product_group_screen.dart';
 import 'feature/viewmodels/login/login_cubit.dart';
 import 'feature/viewmodels/product/product_cubit.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: ColorsManager.primaryColor),
         primaryColor: ColorsManager.primaryColor,
       ),
-      home:   LoginScreen(),
+      home:   ProductGroupScreen(),
       debugShowCheckedModeBanner: false,
     ),
     );
