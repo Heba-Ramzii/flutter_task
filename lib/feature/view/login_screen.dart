@@ -15,6 +15,7 @@ class LoginScreen extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController companyController = TextEditingController();
 
   LoginScreen({super.key});
 
@@ -35,51 +36,52 @@ class LoginScreen extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: defaultPadding*0.5),
-                  child: Image.asset(
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Image.asset(
                     Assets.imagesLogin,
                     //height: 200,
                   ),
-                ),
-                Text(
-                  "Login",
-                  style: StyleManager.textStyleDark24.copyWith(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: defaultPadding),
-                LogInForm(
-                  formKey: _formKey,
-                  usernameController: usernameController,
-                  passwordController: passwordController,
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      final user = UserModel(
-                        partnerCode: "uKDjRl/y5vg=",
-                        userName: usernameController.text,
-                        password: passwordController.text,
-                        langId: 1,
-                      );
-                      context.read<LoginCubit>().login(user);
-                    }
-
-                  } ,
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor:  ColorsManager.secondaryColor,
-                    foregroundColor: Colors.white,
-                    minimumSize: const Size(double.infinity, 48),
-                    shape: const StadiumBorder(),
+                  Text(
+                    "Login",
+                    style: StyleManager.textStyleDark24.copyWith(fontWeight: FontWeight.bold),
                   ),
-                  child: const Text("Login"),
-                ),
-              ],
+                  const SizedBox(height: defaultPadding),
+                  LogInForm(
+                    formKey: _formKey,
+                    usernameController: usernameController,
+                    passwordController: passwordController,
+                    companyController: companyController,
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        final user = UserModel(
+                          partnerCode: companyController.text,
+                          //"uKDjRl/y5vg=",
+                          userName: usernameController.text,
+                          password: passwordController.text,
+                          langId: 1,
+                        );
+                        context.read<LoginCubit>().login(user);
+                      }
+            
+                    } ,
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      backgroundColor:  ColorsManager.secondaryColor,
+                      foregroundColor: Colors.white,
+                      minimumSize: const Size(double.infinity, 48),
+                      shape: const StadiumBorder(),
+                    ),
+                    child: const Text("Login"),
+                  ),
+                ],
+              ),
             ),
           );
         },

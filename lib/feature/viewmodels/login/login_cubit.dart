@@ -19,7 +19,7 @@ class LoginCubit extends Cubit<LoginState> {
       if (response.statusCode == 200) {
         emit(LoginSuccess(response.data));
       } else {
-        emit(LoginFailure('Login failed.'));
+        emit(LoginFailure(response.data['message']));
       }
     } catch (e) {
       emit(LoginFailure(e.toString()));

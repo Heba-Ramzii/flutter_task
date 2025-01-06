@@ -8,12 +8,14 @@ class LogInForm extends StatefulWidget {
     required this.formKey,
     required this.usernameController,
     required this.passwordController,
+    required this.companyController,
 
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController usernameController;
   final TextEditingController passwordController;
+  final TextEditingController companyController;
   bool passwordVisible = true;
 
   @override
@@ -55,22 +57,69 @@ class _LogInFormState extends State<LogInForm> {
                 borderRadius: BorderRadius.all(Radius.circular(50)),
               ),
             ),
-            keyboardType: TextInputType.phone,
-            onSaved: (phone) {
+            keyboardType: TextInputType.name,
+            onSaved: (name) {
+              // Save it
+            },
+          ),
+          const SizedBox(height: defaultPadding,),
+          TextFormField(
+            keyboardType: TextInputType.visiblePassword,
+            controller: widget.passwordController,
+            validator: passwordValidator.call,
+            obscureText: widget.passwordVisible,
+            decoration: InputDecoration(
+              prefixIcon: const Padding(
+                padding: EdgeInsets.symmetric(vertical: defaultPadding),
+                child: Icon(
+                  Icons.lock_rounded,
+                  color: ColorsManager.greyColor,
+                  size: 24,
+                ),
+              ),
+              suffixIcon: IconButton(
+                icon: Icon(
+                    widget.passwordVisible
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined),
+                color: ColorsManager.greyColor,
+                onPressed: () {
+                  setState(
+                        () {
+                      widget.passwordVisible = ! widget.passwordVisible;
+                    },
+                  );
+                },
+              ) ,
+              hintText: "Enter password",
+              hintStyle: const TextStyle(
+                  fontWeight: FontWeight.normal,
+                  color: ColorsManager.greyColor
+              ),
+              filled: true,
+              fillColor: ColorsManager.lightSecondaryColor,
+              contentPadding: const EdgeInsets.symmetric(
+                  horizontal:defaultPadding * 1.5, vertical: defaultPadding ),
+              border: const OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(50)),
+              ),
+            ),
+            onSaved: (v) {
               // Save it
             },
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: defaultPadding),
             child: TextFormField(
-              controller: widget.passwordController,
-              validator: passwordValidator.call,
-              obscureText: widget.passwordVisible,
+              keyboardType: TextInputType.text,
+              controller: widget.companyController,
+              validator: nameValidator.call,
               decoration: InputDecoration(
                 prefixIcon: const Padding(
                   padding: EdgeInsets.symmetric(vertical: defaultPadding),
                   child: Icon(
-                    Icons.lock_rounded,
+                    Icons.qr_code_rounded,
                     color: ColorsManager.greyColor,
                     size: 24,
                   ),
@@ -89,7 +138,7 @@ class _LogInFormState extends State<LogInForm> {
                     );
                   },
                 ) ,
-                hintText: "Enter password",
+                hintText: "Enter code",
                 hintStyle: const TextStyle(
                     fontWeight: FontWeight.normal,
                     color: ColorsManager.greyColor
