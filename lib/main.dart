@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: ColorsManager.primaryColor),
         primaryColor: ColorsManager.primaryColor,
       ),
-      home:  const ProductGroupScreen(),
+      home:   LoginScreen(),
       debugShowCheckedModeBanner: false,
     ),
     );
