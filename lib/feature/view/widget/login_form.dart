@@ -1,0 +1,117 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
+
+import '../../../core/utils/colors_manager.dart';
+import '../../../core/utils/constants.dart';
+
+class LogInForm extends StatefulWidget {
+  LogInForm({
+    super.key,
+    required this.formKey,
+    required this.usernameController,
+    required this.passwordController,
+
+  });
+
+  final GlobalKey<FormState> formKey;
+  final TextEditingController usernameController;
+  final TextEditingController passwordController;
+  bool passwordVisible = true;
+
+  @override
+  State<LogInForm> createState() => _LogInFormState();
+}
+
+class _LogInFormState extends State<LogInForm> {
+
+  @override
+  Widget build(BuildContext context, ) {
+    return Form(
+      key: widget.formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            controller: widget.usernameController,
+            validator: nameValidator.call,
+            decoration: const InputDecoration(
+              prefixIcon: Padding(
+                padding:
+                    EdgeInsets.symmetric(vertical: 16),
+                child: Icon(
+                  IconlyLight.profile,
+                  color: ColorsManager.greyColor,
+                  size: 24,
+                ),
+              ),
+              hintText: "Enter username",
+              hintStyle: TextStyle(
+                fontWeight: FontWeight.normal,
+                color: ColorsManager.greyColor
+              ),
+              filled: true,
+              fillColor: ColorsManager.lightSecondaryColor,
+              contentPadding: EdgeInsets.symmetric(
+                  horizontal: defaultPadding * 1.5, vertical: defaultPadding),
+              border: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(50)),
+              ),
+            ),
+            keyboardType: TextInputType.phone,
+            onSaved: (phone) {
+              // Save it
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: defaultPadding),
+            child: TextFormField(
+              controller: widget.passwordController,
+              validator: passwordValidator.call,
+              obscureText: widget.passwordVisible,
+              decoration: InputDecoration(
+                prefixIcon: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: defaultPadding),
+                  child: Icon(
+                    IconlyLight.lock,
+                    color: ColorsManager.greyColor,
+                    size: 24,
+                  ),
+                ),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                      widget.passwordVisible
+                          ? IconlyLight.show
+                          : IconlyLight.hide),
+                  color: ColorsManager.greyColor,
+                  onPressed: () {
+                    setState(
+                          () {
+                        widget.passwordVisible = ! widget.passwordVisible;
+                      },
+                    );
+                  },
+                ) ,
+                hintText: "Enter password",
+                hintStyle: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    color: ColorsManager.greyColor
+                ),
+                filled: true,
+                fillColor: ColorsManager.lightSecondaryColor,
+                contentPadding: const EdgeInsets.symmetric(
+                    horizontal:defaultPadding * 1.5, vertical: defaultPadding ),
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(50)),
+                ),
+              ),
+              onSaved: (v) {
+                // Save it
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
