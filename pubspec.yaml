@@ -38,9 +38,7 @@ dependencies:
   bloc: ^8.1.4
   flutter_bloc: ^8.1.6
   dio: ^4.0.0
-  flutter_iconly: ^1.0.2
   form_field_validator: ^1.1.0
-  nb_utils: ^7.0.5
   fluttertoast: ^8.0.8
   cached_network_image: ^3.4.1
 

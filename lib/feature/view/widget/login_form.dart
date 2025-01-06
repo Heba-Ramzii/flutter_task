@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
-
 import '../../../core/utils/colors_manager.dart';
 import '../../../core/utils/constants.dart';
 
@@ -38,7 +36,7 @@ class _LogInFormState extends State<LogInForm> {
                 padding:
                     EdgeInsets.symmetric(vertical: 16),
                 child: Icon(
-                  IconlyLight.profile,
+                  Icons.person,
                   color: ColorsManager.greyColor,
                   size: 24,
                 ),
@@ -72,7 +70,7 @@ class _LogInFormState extends State<LogInForm> {
                 prefixIcon: const Padding(
                   padding: EdgeInsets.symmetric(vertical: defaultPadding),
                   child: Icon(
-                    IconlyLight.lock,
+                    Icons.lock_rounded,
                     color: ColorsManager.greyColor,
                     size: 24,
                   ),
@@ -80,8 +78,8 @@ class _LogInFormState extends State<LogInForm> {
                 suffixIcon: IconButton(
                   icon: Icon(
                       widget.passwordVisible
-                          ? IconlyLight.show
-                          : IconlyLight.hide),
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined),
                   color: ColorsManager.greyColor,
                   onPressed: () {
                     setState(
