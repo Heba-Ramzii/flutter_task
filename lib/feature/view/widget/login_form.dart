@@ -115,8 +115,8 @@ class _LogInFormState extends State<LogInForm> {
               keyboardType: TextInputType.text,
               controller: widget.companyController,
               validator: nameValidator.call,
-              decoration: InputDecoration(
-                prefixIcon: const Padding(
+              decoration: const InputDecoration(
+                prefixIcon: Padding(
                   padding: EdgeInsets.symmetric(vertical: defaultPadding),
                   child: Icon(
                     Icons.qr_code_rounded,
@@ -124,30 +124,16 @@ class _LogInFormState extends State<LogInForm> {
                     size: 24,
                   ),
                 ),
-                suffixIcon: IconButton(
-                  icon: Icon(
-                      widget.passwordVisible
-                          ? Icons.visibility_outlined
-                          : Icons.visibility_off_outlined),
-                  color: ColorsManager.greyColor,
-                  onPressed: () {
-                    setState(
-                          () {
-                        widget.passwordVisible = ! widget.passwordVisible;
-                      },
-                    );
-                  },
-                ) ,
                 hintText: "Enter code",
-                hintStyle: const TextStyle(
+                hintStyle: TextStyle(
                     fontWeight: FontWeight.normal,
                     color: ColorsManager.greyColor
                 ),
                 filled: true,
                 fillColor: ColorsManager.lightSecondaryColor,
-                contentPadding: const EdgeInsets.symmetric(
+                contentPadding: EdgeInsets.symmetric(
                     horizontal:defaultPadding * 1.5, vertical: defaultPadding ),
-                border: const OutlineInputBorder(
+                border: OutlineInputBorder(
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.all(Radius.circular(50)),
                 ),
